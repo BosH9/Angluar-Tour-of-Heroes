@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heros/heros.component';
@@ -11,12 +12,15 @@ import { MessageService } from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ShowMyIpComponent } from './show-my-ip/show-my-ip.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroes', component: HeroesComponent }
+  { path: 'heroes', component: HeroesComponent },
+  { path: 'myip', component: ShowMyIpComponent }
 ];
 @NgModule({
   declarations: [
@@ -24,15 +28,17 @@ const routes: Routes = [
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
-  ],
+    DashboardComponent,
+    ShowMyIpComponent,
+    ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [HeroService, MessageService],
+  providers: [ HeroService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
